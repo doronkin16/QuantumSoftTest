@@ -32,14 +32,14 @@ class NodeControllerTest {
 
     @Test
     void testSearchNodes() {
-        ResponseEntity<Node> response = restTemplate.getForEntity("/api/Nodes/search?value=Root-0", Node.class);
+        ResponseEntity<Node> response = restTemplate.getForEntity("/api/Nodes/search?value=0-0", Node.class);
 
         assertTrue(response.getStatusCode().is2xxSuccessful());
 
         Node result = response.getBody();
         assertNotNull(result);
-        assertEquals("Root", result.getValue());
-        assertEquals("Root-0", result.getChildren().getFirst().getValue());
+        assertEquals("0", result.getValue());
+        assertEquals("0-0", result.getChildren().getFirst().getValue());
     }
 
     @Test
@@ -57,7 +57,7 @@ class NodeControllerTest {
     }
 
     private Node createHierarchyWithNewNode() {
-        Node root = new Node(1L, "Root");
+        Node root = new Node(1L, "0");
         Node newNode = new Node(0L, NEW_NODE_VALUE);
         root.addChild(newNode);
         return root;

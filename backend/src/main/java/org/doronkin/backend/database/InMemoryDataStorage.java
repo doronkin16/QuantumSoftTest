@@ -18,7 +18,7 @@ public class InMemoryDataStorage {
     public void initDB() {
         idCounter.set(1);
 
-        root = new Node(idCounter.getAndIncrement(), "Root");
+        root = new Node(idCounter.getAndIncrement(), "0");
         createNestedLevels(0, root);
     }
 
